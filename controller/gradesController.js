@@ -74,8 +74,8 @@ const deleteAllGrades = async (_req, res) => {
 
 const findByName = async (req, res) => {
   try {
-    const { name } = req.params;
-    const grade = await Grades.find({ name: name });
+    const nameSearch = new RegExp(req.params.name, 'i');
+    const grade = await Grades.find({ name: { $regex: nameSearch } });
     if (Object.keys(grade).length === 0) {
       res.status(404).send('Name does not exist');
       return;
