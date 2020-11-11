@@ -12,11 +12,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
-  cors(
-    cors({
-      origin: 'https://nordiws-grades-app.herokuapp.com/',
-    })
-  )
+  cors({
+    origin: 'https://nordiws-grades-app.herokuapp.com/',
+  })
 );
 app.use('/', gradesRouter);
 
